@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-
+<<style>
+nav a:hover{
+ 	background-color:#d9534f;
+ 	font-size: 15pt;
+ 	
+ }
+</style>
 
 		<hr color=black>
 <div>

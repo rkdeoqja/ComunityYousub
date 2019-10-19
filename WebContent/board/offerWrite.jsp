@@ -21,7 +21,9 @@
 		<tr>
 			<th><h1>추천채널 알리기</h1></th>
 		</tr>
-		<tr></tr>
+		<tr>
+			<td></td>
+		</tr>
 	</table>
 </body>
 </html>
