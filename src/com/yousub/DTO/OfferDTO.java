@@ -9,13 +9,13 @@ public class OfferDTO {
 			String id;
 			String nick;
 			String oUrl;
-			String oTitle;
+			String offerId;
 			String oContent;
 			Timestamp oDate;
 			int oHit;
 			
 			
-			public OfferDTO(int boardNo, int oNo, String id, String nick, String oUrl, String oTitle, String oContent,
+			public OfferDTO(int boardNo, int oNo, String id, String nick, String oUrl, String offerId, String oContent,
 					Timestamp oDate, int oHit) {
 				super();
 				this.boardNo = boardNo;
@@ -23,7 +23,7 @@ public class OfferDTO {
 				this.id = id;
 				this.nick = nick;
 				this.oUrl = oUrl;
-				this.oTitle = oTitle;
+				this.offerId = offerId;
 				this.oContent = oContent;
 				this.oDate = oDate;
 				this.oHit = oHit;
@@ -60,12 +60,17 @@ public class OfferDTO {
 			public void setoUrl(String oUrl) {
 				this.oUrl = oUrl;
 			}
-			public String getoTitle() {
-				return oTitle;
+			
+			public String getOfferId() {
+				return offerId;
 			}
-			public void setoTitle(String oTitle) {
-				this.oTitle = oTitle;
+
+
+			public void setOfferId(String offerId) {
+				this.offerId = offerId;
 			}
+
+
 			public String getoContent() {
 				return oContent;
 			}

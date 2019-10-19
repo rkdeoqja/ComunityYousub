@@ -29,31 +29,24 @@
 	</div>
 
 	<div>
-		<table border='0' width='1000' cellspacing='0' cellpadding='2'
+		<table border='0' width='1100' cellspacing='0' cellpadding='2'
 			align=center>
 			<tr>
 				<th><h1>추천튜브</h1></th>
 			</tr>
 			<tr bgcolor="black" height=30>
-				<td width=150px><font color="white" class=font>&nbsp;&nbsp;추천채널</font></td>
+				<td width=150px align="center"><font color="white" class=font>&nbsp;&nbsp;추천채널</font></td>
 				<td style=" text-align: center" width=550px ><font color="white" class=font>추천내용</font></td>
-				<td width=100><font color="white" class=font>&nbsp;&nbsp;닉네임</font></td>
-				<td width=100><font color="white" class=font>&nbsp;&nbsp;작성일</font></td>
-				<td width=100><font color="white" class=font>&nbsp;&nbsp;조회수</font></td>
+				<td width=100 align="center"><font color="white" class=font>&nbsp;&nbsp;닉네임</font></td>
+				<td width=100 align="center"><font color="white" class=font>&nbsp;&nbsp;작성일</font></td>
+				<td width=100 align="center"><font color="white" class=font>&nbsp;&nbsp;조회수</font></td>
+				<td width=100 align="center"><font color="white" class=font>&nbsp;&nbsp;영상유무</font></td>
 
 			</tr>
 			<tr>
-				<td colspan=5 height="2" bgcolor="red"></td>
+				<td colspan=6 height="2" bgcolor="red"></td>
 			</tr>
-			<c:forEach items="${offerList }" var="offerList">
-				<tr>
-					<td>${offerList.offerId }</td>
-					<td>${offerList.content }</td>
-					<td>${offerList.nick }</td>
-					<td>${offerList.oDate }</td>
-					<td>${offerList.oHit}</td>
-				</tr>
-			</c:forEach>
+			
 			<% ArrayList<OfferDTO> offerList = (ArrayList<OfferDTO>) request.getAttribute("offerList"); 
 				
 				int where = 1;
@@ -114,22 +107,42 @@
 				for(int i = startrow;i<endrow;i++){
 					if(i%2 == 0){
 			%>
-						<tr bgcolor="white" height=30>
-							<td width=150px><font color="white" class=font>&nbsp;&nbsp;<%=offerList.get(i).getoTitle() %></font></td>
-							<td style=" text-align: center" width=550px ><font color="white" class=font><%=offerList.get(i).getoContent() %></font></td>
-							<td width=100><font color="white" class=font>&nbsp;&nbsp;<%=offerList.get(i).getNick() %></font></td>
-							<td width=100><font color="white" class=font>&nbsp;&nbsp;<%=offerList.get(i).getoDate() %></font></td>
-							<td width=100><font color="white" class=font>&nbsp;&nbsp;조회수<%=offerList.get(i).getoHit() %></font></td>
+						<tr bgcolor="white" height=30 align="center">
+							<td width=150px><font color="black" class=font>&nbsp;&nbsp;<%=offerList.get(i).getOfferId() %></font></td>
+							<td style=" text-align: center" width=550px ><a href="offerView.do?oNo=<%=offerList.get(i).getoNo() %>"><font color="black" class=font><%=offerList.get(i).getoContent() %></font></a></td>
+							<td width=100><font color="black" class=font>&nbsp;&nbsp;<%=offerList.get(i).getNick() %></font></td>
+							<td width=100><font color="black" class=font>&nbsp;&nbsp;<%=offerList.get(i).getoDate() %></font></td>
+							<td width=100><font color="black" class=font>&nbsp;&nbsp;<%=offerList.get(i).getoHit() %></font></td>
+							<%if(offerList.get(i).getoUrl().equals("not")){ 
+							%>
+								<td width=100 align="center">무</td>
+							<%
+							}else{
+							%>
+								<td width=100 align="center">유</td>
+							<%
+							}
+							%>
 						</tr>
 			<%			
 					}else{
 			%>
-						<tr bgcolor="lightgrey" height=30>
-							<td width=150px><font color="white" class=font>&nbsp;&nbsp;<%=offerList.get(i).getoTitle() %></font></td>
-							<td style=" text-align: center" width=550px ><font color="white" class=font><%=offerList.get(i).getoContent() %></font></td>
-							<td width=100><font color="white" class=font>&nbsp;&nbsp;<%=offerList.get(i).getNick() %></font></td>
-							<td width=100><font color="white" class=font>&nbsp;&nbsp;<%=offerList.get(i).getoDate() %></font></td>
-							<td width=100><font color="white" class=font>&nbsp;&nbsp;조회수<%=offerList.get(i).getoHit() %></font></td>
+						<tr bgcolor="lightgrey" height=30 align="center">
+							<td width=150px><font color="black" class=font>&nbsp;&nbsp;<%=offerList.get(i).getOfferId() %></font></td>
+							<td style=" text-align: center" width=550px ><a href="offerView.do?oNo=<%=offerList.get(i).getoNo() %>"><font color="black" class=font><%=offerList.get(i).getoContent() %></font></a></td>
+							<td width=100><font color="black" class=font>&nbsp;&nbsp;<%=offerList.get(i).getNick() %></font></td>
+							<td width=100><font color="black" class=font>&nbsp;&nbsp;<%=offerList.get(i).getoDate() %></font></td>
+							<td width=100><font color="black" class=font>&nbsp;&nbsp;<%=offerList.get(i).getoHit() %></font></td>
+							<%if(offerList.get(i).getoUrl().equals("not")){ 
+							%>
+								<td width=100 align="center">무</td>
+							<%
+							}else{
+							%>
+								<td width=100 align="center">유</td>
+							<%
+							}
+							%>
 						</tr>
 			<%			
 					}
@@ -137,22 +150,22 @@
 			
 			%>
 			<tr>
-				<td colspan=5 height="2" bgcolor="red"></td>
+				<td colspan=6 height="2" bgcolor="red"></td>
 			</tr>
 			<tr>
-				<td colspan=5 height="4" bgcolor="white"></td>
+				<td colspan=6 height="4" bgcolor="white"></td>
 			</tr>
 			<% if(session.getAttribute("id") !=null){
 			%>
 				<tr>
-					<td colspan=4></td>
+					<td colspan=5></td>
 					<td><input type="button" value="채널 추천하기" onClick="location.href='offerWritePage.do'" class="btn btn_black"></td>
 				</tr>
 			<%
 			}
 			%>
 			<tr align=center>
-				<td colspan=5><input type=text style="border:1px solid lightgrey ">&nbsp;&nbsp;<input type="button" onclick="location.href='offerSearch.do'" value="검색" class="btn btn_danger"></td>
+				<td colspan=6><input type=text style="border:1px solid lightgrey ">&nbsp;&nbsp;<input type="button" onclick="location.href='offerSearch.do'" value="검색" class="btn btn_danger"></td>
 			</tr>
 	</table>
 	<table align="center">

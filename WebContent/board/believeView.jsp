@@ -67,14 +67,11 @@ tr td input.btnBlack {
 				<th colspan="6" align="left"><h1>믿고보는 게시판</h1></th>
 			</tr>
 			<tr>
-				<td colspan="6" height="2" bgcolor="red"></td>
-			</tr>
-			<tr>
 				
 				<td colspan="6" class="one" align="center" style="background-color: black; color:white;"><h2>${bView.bTitle }</h2></td>
 			</tr>
 			<tr>
-				<td colspan="6" height="2" bgcolor="red"></td>
+				<td colspan="6" height="3" bgcolor="red"></td>
 			</tr>
 			<tr height=7>
 			<td style="width: 160px" align="center"><h4>게시자</h4></td>
@@ -132,7 +129,7 @@ tr td input.btnBlack {
 							<input type="text" style="border: 1px solid black; width: 900px; height: 50px; text-align: left; padding-left: 10px;"
 							name="reContent" >
 						</td>
-						<td colspan=1 align="center" style="padding-top:;"><input
+						<td colspan=1 align="center" style="padding-top:;">&nbsp;&nbsp;<input
 							type="submit" value="댓글작성" class="btnRed"
 							onclick="window.location.reload()"></td>
 					</tr>
@@ -145,7 +142,7 @@ tr td input.btnBlack {
 	
 	
 	<c:forEach items="${reDTO }" var="reply"><!-- 댓글 목록 띄우기 -->
-		<table width=1000px align="center">
+		<table width=950px align="center">
 			<tr height=40px>
 				<td width=100px><strong><h4>${reply.nick }</h4></strong><input type="hidden" name="id"
 					value="${reply.id }" id="id"></td>
@@ -154,21 +151,22 @@ tr td input.btnBlack {
 				<td align="center">
 					<a href="reHitUp.do?reNo=${reply.reNo }&bNo=${bView.bNo}&boardNo=${bView.boardNo}"><strong>추천</strong> ${reply.reHit }</a>&nbsp; 
 					<a href="reHateUp.do?reNo=${reply.reNo }&bNo=${bView.bNo}&boardNo=${bView.boardNo}"><strong>싫어요</strong> ${reply.reHate }</a> 
-				
+					&emsp;&emsp;
 					<c:if test="${reply.id eq id }"> <!-- 리플아이디와 세션아이디가 같은곳에만 삭제 버튼 생성 -->
 						<input type="button" value="삭제" 
 						onClick="location.href='reDelete.do?reNo=${reply.reNo }&bNo=${bView.bNo}&boardNo=${bView.boardNo}'" 
-						class="btnRed" >
+						class="btnRed">
 					</c:if>
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3" height="0.5px" bgcolor="lightgray"></td>
+				<td colspan="4" height="1px" bgcolor="lightgray"></td>
 				<td></td>
 			</tr>
 		</table>
+		
 	</c:forEach>
-
+	<br><br><br><br><br><br><br><br><br><br>
 
 </body>
 </html>

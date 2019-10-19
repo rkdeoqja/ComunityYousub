@@ -25,6 +25,8 @@ import com.yousub.command.LogoutCommand;
 import com.yousub.command.MemberInfoCommand;
 import com.yousub.command.NewReplyCommand;
 import com.yousub.command.OfferListCommand;
+import com.yousub.command.OfferViewCommand;
+import com.yousub.command.OfferWriteCommand;
 import com.yousub.command.ReplyAddCommand;
 import com.yousub.command.ReplyDeleteCommand;
 import com.yousub.command.ReplyHateCommand;
@@ -205,6 +207,16 @@ public class FrontController extends HttpServlet {
 			viewPage = "board/offer.jsp";
 		}else if(comm.equals("offerWritePage.do")) {
 			viewPage="board/offerWrite.jsp";
+		}else if(comm.equals("offerWrite.do")) {
+			command = new OfferWriteCommand();
+			command.execute(request, response);
+			viewPage ="offerPage.do";
+		}else if(comm.equals("offerView.do")) {
+			command = new OfferViewCommand();
+			command.execute(request, response);
+			viewPage = "offerViewPage.do";
+		}else if(comm.equals("offerViewPage.do")){
+			viewPage = "board/offerView.jsp";
 		}
 		
 		

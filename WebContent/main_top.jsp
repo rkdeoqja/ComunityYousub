@@ -11,8 +11,8 @@
 		<div>
 			<div class="logo">
 			<a href="mainPage.do">
-				<font class="logoft" color="red" size="150" style="padding-left: 80px;">You</font>
-				<font class="logoft" color="black" size="150">Sub</font>		
+				<font class="logoft" color="red" style="padding-left: 80px; font-size: 50pt">You</font>
+				<font class="logoft" color="black" style=" font-size: 50pt">Sub</font>		
 			</a>
 			
 			</div>
@@ -23,7 +23,7 @@
 			String userId = session.getAttribute("id").toString();
 	%>
 			<div class=logo_right>
-				<font class="logoft" size="5px">
+				<font class="logoft" style="font-size: 30pt">
 					<a href="memberInfo.do" class=""><%=userId %></a>&nbsp;
 					<a href="logout.do" style="padding-right: 80px;"><font color="red">Log Out</font></a>
 				</font>
@@ -32,7 +32,7 @@
 		}else{
 	%>
 			<div class=logo_right>
-				<font class="logoft" size="5px">
+				<font class="logoft" style="font-size: 30pt">
 					<a href="loginPage.do">Log In</a>&nbsp;
 					<a href="joinPage.do" style="padding-right: 80px;"><font color="Red">Sign</font></a>
 				</font>
@@ -46,6 +46,7 @@
 			
 		</div>
 	<br><br><br><br>
+	<hr color="black">
 	
 </body>
 </html>

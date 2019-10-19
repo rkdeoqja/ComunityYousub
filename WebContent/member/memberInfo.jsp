@@ -64,12 +64,12 @@ function check(){
 		<jsp:include page="../main_menu.jsp"></jsp:include>
 	</div>
 	<form action="infoChange.do" method="post" name="f">
-	<table width="800px">
+	<table width="800px" style="font-size: 15pt;">
 	<tr height="90px" >
 		<td bgcolor="black" colspan="2" align="center"><h1 style="color: white">회원정보</h1></td>
 	</tr>
 	<tr>
-		<td colspan=5 height="0.5" bgcolor="red"></td>
+		<td colspan=5 height="4" bgcolor="red"></td>
 	</tr>
 	<c:forEach items="${userInfo}" var="dto">
 		<tr height="90px" >
@@ -101,7 +101,7 @@ function check(){
 			<td>${dto.joda }</td>
 		</tr>
 			<tr>
-		<td colspan=5 height="0.5" bgcolor="red"></td>
+		<td colspan=5 height="4" bgcolor="red"></td>
 	</tr>
 	</c:forEach>
 		<tr height="90px" >

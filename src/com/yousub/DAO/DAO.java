@@ -449,17 +449,17 @@ public class DAO {
 	
 	private void upHit(String bNo) {
 		Connection connection = null;
-		PreparedStatement preparedStatement = null;
+		PreparedStatement pstmt = null;
 		
 		try {
 			Class.forName(driver);
 			connection = 
 					DriverManager.getConnection(url,cId,cPw);
 			String query = "UPDATE test_believe SET bHit = bHit+1 WHERE bno=? ";
-			preparedStatement = connection.prepareStatement(query);
-			preparedStatement.setString(1, bNo);
+			pstmt = connection.prepareStatement(query);
+			pstmt.setString(1, bNo);
 			
-			int rn = preparedStatement.executeUpdate();
+			int rn = pstmt.executeUpdate();
 			System.out.println("rn: "+rn);
 			
 			
@@ -469,7 +469,7 @@ public class DAO {
 			e.printStackTrace();
 		}finally {
 			try {
-				if(preparedStatement!=null)preparedStatement.close();
+				if(pstmt!=null)pstmt.close();
 				if(connection!=null)connection.close();
 				
 			}catch(Exception e) {
@@ -630,6 +630,15 @@ public class DAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(con!=null)con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 		
@@ -668,6 +677,15 @@ public class DAO {
 			
 		}catch(Exception e){
 			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(con!=null)con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 		return redtos;
@@ -704,6 +722,15 @@ public class DAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(con!=null)con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 		return reNdtos;
@@ -727,21 +754,109 @@ public class DAO {
 				String id = rs.getString("id");
 				String nick = rs.getString("nick");
 				String oUrl = rs.getString("oUrl");
-				String oTitle = rs.getString("oTitle");
+				String offerId = rs.getString("offerId");
 				String oContent = rs.getString("oContent");
 				Timestamp oDate = rs.getTimestamp("oDate");
 				int oHit = rs.getInt("oHit");
 				
-				OfferDTO odto = new OfferDTO(boardNo,oNo,id,nick,oUrl,oTitle,oContent,oDate,oHit);
+				OfferDTO odto = new OfferDTO(boardNo,oNo,id,nick,oUrl,offerId,oContent,oDate,oHit);
 				odtos.add(odto);
 			}
 			
 			
 		}catch(Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(con!=null)con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		
 		return odtos;
+	}//offerList
+
+	public void offerWrite(String id, String nick, String boardNo, String offerId, String oUrl, String oContent) {
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		
+		try {
+			
+			Class.forName(driver);
+			con = DriverManager.getConnection(url,cId,cPw);
+			String owQuery = "INSERT INTO test_offer (boardNo,oNo,id,nick,oUrl,offerId,oContent,oDate,oHit) VALUES (?,offer_seq.nextval,?,?,?,?,?,SYSDATE,0)";
+			pstmt = con.prepareStatement(owQuery);
+			pstmt.setInt(1, Integer.parseInt(boardNo));
+			pstmt.setString(2, id);
+			pstmt.setString(3, nick);
+			pstmt.setString(4, oUrl);
+			pstmt.setString(5, offerId);
+			pstmt.setString(6, oContent);
+			pstmt.executeUpdate();
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(con!=null)con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+	}//offerWrite
+
+	public OfferDTO offerView(String stroNo) {
+		OfferDTO odto = null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			Class.forName(driver);
+			con = DriverManager.getConnection(url,cId,cPw);
+			String oViewQuery = "SELECT * FROM test_offer WHERE oNo=?";
+			pstmt = con.prepareStatement(oViewQuery);
+			pstmt.setInt(1,Integer.parseInt(stroNo));
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int boardNo = rs.getInt("boardNo");
+				int oNo = rs.getInt("oNo");
+				String id = rs.getString("id");
+				String nick = rs.getString("nick");
+				String oUrl = rs.getString("oUrl");
+				String offerId = rs.getString("offerId");
+				String oContent = rs.getString("oContent");
+				Timestamp oDate = rs.getTimestamp("oDate");
+				int oHit = rs.getInt("oHit");
+				
+				odto = new OfferDTO(boardNo,oNo,id,nick,oUrl,offerId,oContent,oDate,oHit);
+				
+				
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(con!=null)con.close();
+			}catch(Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		return odto;
 	}
+	
+	
 	
 }

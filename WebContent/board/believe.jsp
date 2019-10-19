@@ -64,20 +64,20 @@ tr td input.btnBlack {
 
 	<div>
 		<table border='0' width='1200' cellspacing='0' cellpadding='2'
-			align=center>
+			align=center style="font-size: 13pt;text-align:center; ">
 			<tr>
 				<th colspan=5><h1>믿고보는 게시판</h1></th>
 			</tr>
 			<tr bgcolor="black" height=30>
-				<td id="td1"><font color="white" class=font>게시판</font></td>
+				<td width=100><font color="white" class=font>&nbsp;&nbsp;게시판</font></td>
 				<td><font color="white" class=font> 제목</font></td>
-				<td id="td1" width=100><font color="white" class=font>닉네임</font></td>
-				<td id="td1" width=100><font color="white" class=font>작성일</font></td>
-				<td id="td1" width=100><font color="white" class=font>조회수</font></td>
+				<td width=150><font color="white" class=font>닉네임</font></td>
+				<td  width=150><font color="white" class=font>작성일</font></td>
+				<td  width=150><font color="white" class=font>조회수</font></td>
 
 			</tr>
 			<tr>
-				<td colspan=5 height="2" bgcolor="red"></td>
+				<td colspan=5 height="3" bgcolor="red"></td>
 			</tr>
 			<%
 				ArrayList<BelieveDTO> list = (ArrayList<BelieveDTO>) request.getAttribute("believe");
@@ -147,23 +147,23 @@ tr td input.btnBlack {
 					if (i % 2 == 0) {
 			%>
 			<tr bgcolor="white" height=30>
-				<td id="td1"><font color="black" class="font"><%=list.get(i).getbNo()%></font></td>
+				<td><font color="black" class="font"><%=list.get(i).getbNo()%></font></td>
 				<td><font color="black" class="font"> <a
 						href="believeView.do?bNo=<%=list.get(i).getbNo()%>&boardNo=<%=list.get(i).getBoardNo()%>"><%=list.get(i).getbTitle()%></a></font></td>
-				<td id="td1" width=100><font color="black" class="font"><%=list.get(i).getNick()%></font></td>
-				<td id="td1" width=100><font color="black" class="font"><%=list.get(i).getbDate()%></font></td>
-				<td id="td1" width=100><font color="black" class="font"><%=list.get(i).getbHit()%></font></td>
+				<td><font color="black" class="font"><%=list.get(i).getNick()%></font></td>
+				<td><font color="black" class="font"><%=list.get(i).getbDate()%></font></td>
+				<td><font color="black" class="font"><%=list.get(i).getbHit()%></font></td>
 			</tr>
 			<%
 				} else {
 			%>
 			<tr bgcolor="lightgrey" height=30>
-				<td id="td1"><font color="black" class="font"><%=list.get(i).getbNo()%></font></td>
+				<td><font color="black" class="font"><%=list.get(i).getbNo()%></font></td>
 				<td><font color="black" class="font"> <a
-						href="believeView.do?bNo=<%=list.get(i).getbNo()%>&boardNo=<%=list.get(i).getBoardNo()%>"><%=list.get(i).getbTitle()%></a></font></td>
-				<td id="td1" width=100><font color="black" class="font"><%=list.get(i).getNick()%></font></td>
-				<td id="td1" width=100><font color="black" class="font"><%=list.get(i).getbDate()%></font></td>
-				<td id="td1" width=100><font color="black" class="font"><%=list.get(i).getbHit()%></font></td>
+						href="believeView.do?bNo=<%=list.get(i).getbNo()%>&BoardNo=<%=list.get(i).getBoardNo()%>"><%=list.get(i).getbTitle()%></a></font></td>
+				<td><font color="black" class="font"><%=list.get(i).getNick()%></font></td>
+				<td><font color="black" class="font"><%=list.get(i).getbDate()%></font></td>
+				<td ><font color="black" class="font"><%=list.get(i).getbHit()%></font></td>
 			</tr>
 			<%
 				}
@@ -174,7 +174,7 @@ tr td input.btnBlack {
 
 
 			<tr>
-				<td colspan=5 height="2" bgcolor="red"></td>
+				<td colspan=5 height="3" bgcolor="red"></td>
 			</tr>
 			<tr>
 				<td colspan=5 height="4" bgcolor="white"></td>
