@@ -37,6 +37,9 @@
 				<td>게시일</td>
 				<td>조회수</td>
 			</tr>
+			<tr>
+				<td colspan=5 bgcolor="red" height="2"></td>
+			</tr>
 			
 			<% ArrayList<BackDTO> list = (ArrayList<BackDTO>) request.getAttribute("back"); 
 			
