@@ -36,7 +36,7 @@ div{margin:auto;}
 <c:forEach items="${userInfo }" var="dto">
 <div>
 <form action="believeWrite.do" method="post">
-	<table  border='0' width='1200' cellspacing='0' cellpadding='2' align=center>
+	<table  border='0' width='1200' cellspacing='0' cellpadding='2' align=center >
 	<tr>
 		<th><h1>믿고보는 게시판</h1></th>
 	</tr>

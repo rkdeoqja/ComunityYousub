@@ -15,6 +15,7 @@ public class BelieveWriteCommand implements Command{
 		String bTitle = request.getParameter("bTitle");
 		String bContent = request.getParameter("bContent");
 		
+		
 		String youtubeUrl = request.getParameter("bUrl");
 		
 		
